@@ -1,0 +1,262 @@
+
+  
+  .card-slider {
+    max-width: 1060px;
+    margin: 0 auto;
+    /** Main link */
+    /** Product title */
+    /** Product image */
+    /** Product description */
+    /** Floating "sale" badge */
+    /** Price */
+    /** Rating */
+    /** "30 reviews" link next to stars */
+    /** Hover state = add box shadow, underline the title */
+  }
+  @media screen and (max-width: 1024px) {
+    .card-slider {
+      width: 80%;
+    }
+  }
+  .card-slider .slick-prev-icon,
+  .card-slider .slick-next-icon {
+    color: black;
+  }
+  .card-slider .slick-slide {
+    padding: 0 10px;
+  }
+  .card-slider .card {
+    position: relative;
+    display: -webkit-box !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    height: 300px;
+    border-radius: 3px;
+    background-color: white;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+  }
+  .card-slider .card .main-link {
+    text-decoration: none;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+  }
+  .card-slider .card .main-link:focus {
+    outline: none;
+  }
+  .card-slider .card .main-link:focus .title {
+    outline: 3px dashed orange;
+    outline-offset: -4px;
+    color: royalblue;
+    text-decoration: underline;
+  }
+  .card-slider .card .title {
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 10px 10px 15px 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .card-slider .card .title:hover {
+    text-decoration: underline;
+  }
+  .card-slider .card .image {
+    /** Visually place the image above all other content (like the heading) in the parent flex container (.card). */
+    -webkit-box-ordinal-group: 0;
+            order: -1;
+    position: relative;
+    height: 100px;
+    padding: 2px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+  }
+  .card-slider .card .image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -webkit-filter: grayscale(0.5);
+            filter: grayscale(0.5);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
+  .card-slider .card .image:hover img {
+    width: 110%;
+    height: 110%;
+  }
+  .card-slider .card .description {
+    margin: 7px 10px 15px 10px;
+    font-size: 14px;
+    opacity: .8;
+  }
+  .card-slider .card .badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 1;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #c80000;
+  }
+  .card-slider .card .price {
+    padding-left: 10px;
+  }
+  .card-slider .card .price .new-price {
+    font-weight: bold;
+  }
+  .card-slider .card .price .original-price {
+    margin-left: 5px;
+    font-size: 14px;
+    font-style: italic;
+    opacity: .5;
+    text-decoration: line-through;
+  }
+  .card-slider .card .rating {
+    margin: 10px 0 15px 10px;
+    color: orange;
+    font-size: 12px;
+  }
+  .card-slider .card .rating .reviews-link {
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 5px;
+  }
+  .card-slider .card .rating .reviews-link:hover {
+    color: black;
+  }
+  .card-slider .card .rating .reviews-link:focus {
+    color: royalblue;
+    outline: 3px dotted royalblue;
+    outline-offset: 2px;
+  }
+  .card-slider .card:hover {
+    
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+  }
+  .card-slider .card:hover .image img,
+  .card-slider .card:focus .image img {
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+  }
+  .card-slider .card a:focus {
+    outline: none;
+  }
+  
+  /**
+    Demo only
+  */
+  .note {
+    text-align: center;
+    font-size: 14px;
+    max-width: 960px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    opacity: .8;
+  }
+  .note a {
+    color: black;
+    font-weight: bold;
+  }
+  .note a:hover, .note a:focus {
+    color: royalblue;
+  }
+  .btn-approve2{
+      font-size: 10px;
+      width: 65px;
+      margin-left:auto; 
+      margin-right:8px;
+      margin-top: -50px;
+      border-radius: 25px;
+  }
+  .btn-approve{
+      font-size: 10px;
+      width: 75px;
+      border-radius: 25px;
+
+  }
+  .buttons{
+      position: absolute;
+      bottom: 45px;
+      right: 8px;
+
+      /* display: inline-block; */
+
+  }
+  .card-slider{
+      margin-top: 50px;
+      margin-bottom: 50px;
+  }
+  .price{
+      color: #0062CC;
+  }
+  hr {
+    border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  margin: 5px;
+  }
+  
+  hr.hr-1 {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+  hr.hr-14 {
+    border: 0;
+    height: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8c8c, #f0f0f0);
+  }
+  .accessory {
+    height: 6px;
+    background-image: radial-gradient(closest-side, gray, rgba(128, 128, 128, 0) 100%);
+    position: relative;
+  }
+  
+  .accessory:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    background-color: #bfbfbf;
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 4px 0;
+    border: 4px solid rgba(255, 255, 255, 0.35);
+    background-clip: padding-box;
+    box-shadow: -10px 10px 0 rgba(255, 255, 255, 0.15), 10px -10px 0 rgba(255, 255, 255, 0.15);
+  }
+  .see-all{
+    max-width: 150px;
+    margin: 0 auto;
+    margin-top: -70px;
+    cursor: pointer;
+  }
+  .see-all:hover{
+    color: #0062CC;
+    fill: #0062CC;
+  }

@@ -1,6 +1,14 @@
 html, body * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
 
 
+.adminloggedin-div, .userloggedin-div{
+  width: 430px;
+  padding-bottom: relative;
+  align-items: center;
+  margin: auto;  
+
+}
+
 .container {
   width: 100%;
   padding-top: 50px;

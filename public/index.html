@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script>
+
+  </head>
   <meta charset="UTF-8">
   <title>SRM </title>
   <link rel="stylesheet" href="./style.css">
@@ -10,14 +20,15 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+
 </head>
 <body>
   
 <!-- partial:index.partial.html -->
-<div class="container MyFlex">
+<div id="userlogin_div"class="container MyFlex">
   <div class="img">
-    <h1><img src="../icons/1x/srm-logo-blue.png" width="250px"> </h1>
-    <img src="../icons/1x/2663543-removebg-preview.png">
+    <h1><img src="./icons/srm-logo-blue.png" width="250px"> </h1>
+    <img src="./icons/2663543-removebg-preview.png">
     <h5>
     </h5>
   </span>
@@ -25,7 +36,7 @@
    
    </div>
   </div>
-<div class="">
+<div id="userlogin_div" class="">
   <div class="frame">
     <div class="nav">
       <ul class="links">
@@ -33,30 +44,32 @@
         <li class="signup-inactive"><a class="btn">Admin </a></li>
       </ul>
     </div>
-    <div id="login_div" ng-app ng-init="checked = false">
+    <div ng-app ng-init="checked = false">
 				        <form class="form-signin" action="" method="post" name="form">
           <label for="username">Username</label>
-          <input class="form-styling" type="text" name="username" placeholder=""id="email_field"/>
+          <input class="form-styling" type="text" name="username" placeholder=""id="useremail_field"/>
           <label for="password">Password</label>
-          <input class="form-styling" type="text" name="password" placeholder=""id="password_field"/>
+          <input class="form-styling" type="text" name="password" placeholder=""id="userpassword_field"/>
           <input type="checkbox" id="checkbox"/>
           <label for="checkbox" ><span class="ui"></span>Keep me signed in</label>
           <div class="btn-animate">
             <a class="btn-signin" onclick="signin()">Sign in</a>
           </div>
-				        </form>
+                </form>
+              <div id="adminlogin_div" ng-app ng-init="checked = false">
         
                 <form class="form-signup" action="" method="post" name="form">
                   <label for="username">Username</label>
-                  <input class="form-styling" type="text" name="username" placeholder=""/>
+                  <input class="form-styling" type="text" name="username" placeholder=""id="adminemail_field"/>
                   <label for="password">Password</label>
-                  <input class="form-styling" type="text" name="password" placeholder=""/>
+                  <input class="form-styling" type="text" name="password" placeholder=""id="adminpassword_field"/>
                   <input type="checkbox" id="checkbox"/>
                   <label for="checkbox" ><span class="ui"></span>Keep me signed in</label>
                   <div class="btn-animate">
-                    <a class="btn-signin">Sign in</a>
+                    <a class="btn-signin" onclick="admin_signin()">Sign in</a>
                   </div>
                         </form>
+                </div>
       
             <!-- <div  class="success">
               <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -78,6 +91,15 @@
 </div>
 
 
+</div>
+<!-- <div id="admin_div" class="adminloggedin-div">
+  <h3>welcome admin</h3>
+    <button>logout</button>
+</div> -->
+<div id="user_div" class="userloggedin-div">
+  <h3>welcome user </h3>
+  <p id="user_para" >login successful</p>
+    <button onclick="userlogout()">logout</button>
 </div>
 
 <!-- partial -->

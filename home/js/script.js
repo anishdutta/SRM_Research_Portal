@@ -48,7 +48,7 @@ $(document).ready(function() {
   $('.card-slider').slick({
     dots: false,
     arrows: true,
-    slidesToShow: 3.2,
+    slidesToShow: 2.5,
     infinite: false,
     responsive: [
       {
@@ -113,3 +113,5 @@ $(document).ready(function() {
   
     return css;
   });
+
+  // menu

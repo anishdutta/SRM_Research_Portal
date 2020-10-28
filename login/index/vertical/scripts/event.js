@@ -1,7 +1,7 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-
+var paperurl = "";
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
     authDomain: "srm-research-portal-3ef39.firebaseapp.com",
@@ -17,7 +17,32 @@ var firebaseConfig = {
   firebase.analytics();
 //Reference messages collection
 //var workshop =firebase.database().ref('Workshop');
+function uploadFile(){
+    // Created a Storage Reference with root dir
+        var storageRef = firebase.storage().ref('events');
+    // Get the file from DOM
+        var brochure = document.getElementById("photos").files[0];
+    //dynamically set reference to the file name
+        var thisRef = storageRef.child(brochure.name);
+    //put request upload file to firebase storage
+    thisRef.put(brochure)
+.then(snapshot => {
+   return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
+})
 
+.then(downloadURL => {
+    alert('Uploaded');
+  console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+  paperurl = downloadURL;
+  return downloadURL;
+})
+
+.catch(error => {
+  // Use to signal error if something goes wrong.
+  console.log(`Failed to upload file and get link - ${error}`);
+});
+
+    }
 
 //listen for form submit
 document.getElementById('Event').addEventListener('submit',submitwork);
@@ -68,11 +93,11 @@ function saveMessage(Type,Title,Role,DandT,internals,externals,brochure,photos)
         Type : Type,
         Title:  Title,
         Role: Role,
-        "Date & Time": DandT,
-        "Number of Internals": internals,
-        "Number of Externals" : externals,
+        DateTime: DandT,
+        NumberofInternals: internals,
+        NumberofExternals : externals,
         Brochure: brochure,
-        Photos: photos
+        Photos: paperurl
     })
 }  
 

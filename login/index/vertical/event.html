@@ -608,7 +608,7 @@
                                         <div>
                                             <form action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input type="file" onchange="uploadFile()" id="brochure" name="files[]" multiple />
+                                                    <input type="file" onchange="uploadFile1()" id="brochure" name="files[]" multiple />
                                                 </div>
                                                 <div class="dz-message needsclick">
                                                     <div class="mb-3">
@@ -624,7 +624,7 @@
                                         <div>
                                             <form action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input type="file" onchange="uploadFile1()" id="photos" name="files[]" multiple />
+                                                    <input type="file" onchange="uploadFile()" id="photos" name="files[]" multiple />
                                                 </div>
                                                 <div class="dz-message needsclick">
                                                     <div class="mb-3">
@@ -791,43 +791,8 @@
   firebase.analytics();
 </script>
         <script src="scripts/event.js"></script>
-        <script>
-    //function to save file
-    function uploadFile(){
-     
-      // Created a Storage Reference with root dir
-      var storageRef = firebase.storage().ref('Events');
-      // Get the file from DOM
-      var brochure = document.getElementById("brochure").files[0];
-      //dynamically set reference to the file name
-        var thisRef = storageRef.child(brochure.name);
-    //put request upload file to firebase storage
-      thisRef.put(brochure).then(function(snapshot) {
-         
-      });
 
-    }
 
- </script>
- <script>
-    //function to save file
-    function uploadFile1(){
-      
-      // Created a Storage Reference with root dir
-      var storageRef = firebase.storage().ref('Events');
-      // Get the file from DOM
-    var photos = document.getElementById("photos").files[0];
-      //console.log(file);
-      
-      //dynamically set reference to the file name
-    var thisRef = storageRef.child(photos.name);
-
-      //put request upload file to firebase storage
-      thisRef.put(photos).then(function(snapshot) {
-       
-    }); 
-}
-</script>
 
     </body>
 

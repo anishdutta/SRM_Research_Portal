@@ -524,20 +524,6 @@
   firebase.analytics();
 </script>
         <script src="scripts/paper.js"></script>
-    <script>
-        //function to save file
-            function uploadFile(){
-        // Created a Storage Reference with root dir
-            var storageRef = firebase.storage().ref('Paper');
-        // Get the file from DOM
-            var brochure = document.getElementById("paper").files[0];
-        //dynamically set reference to the file name
-            var thisRef = storageRef.child(brochure.name);
-        //put request upload file to firebase storage
-            thisRef.put(brochure).then(function(snapshot) {
-        });
-
-        }
-    </script>
+    
     </body>
 </html>

@@ -80,6 +80,18 @@ function signin(){
         // ...
       });
 }
+function signup(){
+    var adminEmail = document.getElementById("adminemail_field").value;
+    var adminPass = document.getElementById("adminpassword_field").value;
+    firebase.auth().createUserWithEmailAndPassword(adminEmail, adminPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+    console.log(errorMessage);
+      // ...
+    });
+}
 // function admin_signin(){
 //   var adminEmail = document.getElementById("adminemail_field").value;
 //   var adminPass = document.getElementById("adminpassword_field").value;

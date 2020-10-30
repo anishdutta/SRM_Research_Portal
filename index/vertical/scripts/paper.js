@@ -1,4 +1,14 @@
-
+var Title = "";
+var Publisher = "";
+var Volume ="";
+var Page ="";
+var date =""; 
+var Type = "";
+var snip="";
+var impact =""; 
+var name =""; 
+var email ="";
+var paper="";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var paperurl = "";
@@ -52,17 +62,17 @@ document.getElementById('Paper').addEventListener('submit',submitwork);
 // Submit form
 function submitwork(){
     //Get values
-    var Title =document.getElementById('Title').value;
-    var Publisher =document.getElementById('Publisher').value;
-    var Volume =document.getElementById('Volume').value;
-    var Page =document.getElementById('Page').value;
-    var date =document.getElementById('date').value;
-    var Type =document.getElementById('Type').value;
-    var snip =document.getElementById('snip').value;
-    var impact =document.getElementById('impact').value;
-    var name =document.getElementById('name').value;
-    var email =document.getElementById('email').value;
-    var paper =document.getElementById('paper').value;
+    Title =document.getElementById('Title').value;
+    Publisher =document.getElementById('Publisher').value;
+    Volume =document.getElementById('Volume').value;
+    Page =document.getElementById('Page').value;
+    date =document.getElementById('date').value;
+    Type =document.getElementById('Type').value;
+    snip =document.getElementById('snip').value;
+    impact =document.getElementById('impact').value;
+    name =document.getElementById('name').value;
+    email =document.getElementById('email').value;
+    paper =document.getElementById('paper').value;
     
 //pass all values
     saveMessage(Title,Publisher,Volume,Page,date,Type,snip,impact,name,email,paper);
@@ -119,8 +129,9 @@ var storageRef = storage.ref();
 // all input fields
 function saveMessage(Title,Publisher,Volume,Page,date,Type,snip,impact,name,email,url)  
 { 
-    console.log(paperurl);
-    firebase.database().ref('PaperPublication').push({    
+   if(Title !="" && Publisher!=""&& Volume!="" && Page!="" && date!="" && Type!="" && snip!="" && impact!="" && name!="" && email!="" && url!="")
+    {
+        firebase.database().ref('PaperPublication').push({    
         Title : Title,
         PublisherName: Publisher,
         Volume:  Volume,
@@ -132,5 +143,23 @@ function saveMessage(Title,Publisher,Volume,Page,date,Type,snip,impact,name,emai
         Name: name,
         Email: email,
         Paper: paperurl
-    })
+        });
+        var alertness = `<div class="col-sm-12">
+            <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">
+                <i class="uil uil-exclamation-octagon d-block display-4 mt-2 mb-3 text-danger"></i>
+                <h5 class="text-success">Entry Created</h5>
+            </div>
+        </div>`;
+    $('#bhokal').append(alertness);    
+    }
+    else{
+        var alertness = `<div class="col-sm-12">
+        <div class="alert alert-danger alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">
+            <i class="uil uil-exclamation-octagon d-block display-4 mt-2 mb-3 text-danger"></i>
+            <h5 class="text-danger">Kindly Fill all the Fields.</h5>
+        </div>
+    </div>`;
+    $('#bhokal').append(alertness);
+    }
+
 }  

@@ -24,7 +24,7 @@ var playersRef = firebase.database().ref("events/");
     var mokData = [data.val()];
     console.log(mokData);
     $.each(mokData, function (i) {
-        var templateString = '<div class="col-md-6 col-xl-3"><div class="card"> <div class="card-body"><h4 class="card-title mt-0">'+mokData[i].Title+'</h4><h6 class="card-subtitle font-14 text-muted">Type</h6></div><img class="img-fluid event-card"  src="'+mokData[i].Photos+'" alt="Card image cap"><div class="card-body"><p class="card-text">Role: '+mokData[i].Role+'<br> Date: '+mokData[i].DateTime+' <br> Internals: '+mokData[i].NumberofInternals+' &nbsp|&nbsp Externals: '+mokData[i].NumberofExternals+'</p><a href="'+mokData[i].Brochure+'" class="card-link">Download Broucher</a></div></div></div>';
+        var templateString = '<div class="col-md-6 col-xl-3"><div class="card"> <div class="card-body"><h4 class="card-title mt-0">'+mokData[i].Title+'</h4><h6 class="card-subtitle font-14 text-muted">Type</h6></div><img class="img-fluid event-card"   src="'+mokData[i].Photos+'" alt="Card image cap"><div class="card-body"><p class="card-text">Role: '+mokData[i].Role+'<br> Date: '+mokData[i].DateTime+' <br> Internals: '+mokData[i].NumberofInternals+' &nbsp|&nbsp Externals: '+mokData[i].NumberofExternals+'</p><a href="'+mokData[i].Brochure+'" class="card-link" target="_blank">Download Broucher</a></div></div></div>';
         $('#test12').append(templateString);
         })
     });

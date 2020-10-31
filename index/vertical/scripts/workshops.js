@@ -6,6 +6,7 @@ var Topic="";
 var ConductedBy="";
 var Place="";
 var DandT="";
+var workshop = "";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -44,9 +45,10 @@ function submitwork(){
     ConductedBy =getInputVal('ConductedBy');
     Place =getInputVal('Place');
     DandT =getInputVal('DandT');
+    workshop = document.getElementById('workshop').value;
 
     //pass all values
-    saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT);  
+    saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT,workshop);  
 }
 
 
@@ -58,7 +60,26 @@ function getInputVal(id){
 
 //Save messages to firebase
 // all input fields
-function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT)  
+function displayImage(row,images){
+    images.getDownloadURL().then(function(url){
+        console.log(url);
+        workshop = workshopad ;
+
+        let new_html = ' ';
+        new_html += '<tr>';
+        new_html += '<td>';
+        new_html += row;
+        new_html += '</tr>';
+        new_html += '<td>';
+        new_html += '<img src ="'+url+'"width="100px" style="float:right">';
+        new_html += '</td>';
+        new_html += '</tr>';
+        $('#List').find('tbody').append(new_html);
+
+
+    });
+}
+function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT,workshopad)  
 { 
     if(Type != "" && Subtype != "" && Topic != "" &&  ConductedBy!= "" && Place !="" && DandT !="" ){
             firebase.database().ref('workshops').push({    
@@ -67,7 +88,8 @@ function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT)
                 Topic: Topic,
                 ConductedBy: ConductedBy,
                 Place: Place,
-                Date : DandT
+                Date : DandT,
+                workshop : workshopad
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

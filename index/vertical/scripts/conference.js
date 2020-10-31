@@ -7,7 +7,7 @@ var Conference ="";
 var Place ="";
 var From ="";
 var till = "";
-var proof = "";
+var conproof = "";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -24,7 +24,32 @@ var firebaseConfig = {
   firebase.analytics();
 //Reference messages collection
 //var workshop =firebase.database().ref('Workshop');
+function uploadFile(){
+    // Created a Storage Reference with root dir
+        var storageRef = firebase.storage().ref('proof');
+    // Get the file from DOM
+        var brochure = document.getElementById("proof").files[0];
+    //dynamically set reference to the file name
+        var thisRef = storageRef.child(brochure.name);
+    //put request upload file to firebase storage
+    thisRef.put(brochure)
+.then(snapshot => {
+   return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
+})
 
+.then(downloadURL => {
+    alert('Uploaded');
+  console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+  conproof = downloadURL;
+  return downloadURL;
+})
+
+.catch(error => {
+  // Use to signal error if something goes wrong.
+  console.log(`Failed to upload file and get link - ${error}`);
+});
+
+    }
 
 //listen for form submit
 document.getElementById('Conference').addEventListener('submit',submitwork);
@@ -58,12 +83,45 @@ function submitwork(){
     //clear form
     //document.getElementById('Workshops').reset();
 }
+var storageRef = storage.ref();
+        
+        $('#List').find('tbody').html('');
+        
+        // var i=0;
+
+        storageRef.child('Events/').listAll().then(function(result){
+            result.items.forEach(function(imageRef){
+                
+                // i++;
+                displayImage(imageRef);
+                //console.log("Image Reference "+ imageRef.toString());
+            });
+        });
+        function displayImage(row,images){
+            images.getDownloadURL().then(function(url){
+                console.log(url);
+                conferenceurl = url;
+        
+                let new_html = ' ';
+                new_html += '<tr>';
+                new_html += '<td>';
+                new_html += row;
+                new_html += '</tr>';
+                new_html += '<td>';
+                new_html += '<img src ="'+url+'"width="100px" style="float:right">';
+                new_html += '</td>';
+                new_html += '</tr>';
+                $('#List').find('tbody').append(new_html);
+        
+        
+            });
+        }
 
 //Save messages to firebase
 // all input fields
-function saveMessage(Type,Author,Title,Conference,Place,From,till,proof)  
+function saveMessage(Type,Author,Title,Conference,Place,From,till)  
 { 
-    if(Type!="" && Author!="" && Title!="" && Conference!="" && Place!="" && From!="" && till!="" && proof!=""){
+    if(Type!="" && Author!="" && Title!="" && Conference!="" && Place!="" && From!="" && till!="" && conproof!=""){
         firebase.database().ref('conference').push({    
             Type : Type,
             NumberofAuthor:Author,
@@ -72,7 +130,7 @@ function saveMessage(Type,Author,Title,Conference,Place,From,till,proof)
             Place: Place,
             Start: From,
             End : till,
-            Proof: proof,
+            Proof: conproof,
         })
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

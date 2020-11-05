@@ -23,7 +23,7 @@ var playersRef = firebase.database().ref("conference/");
     var mokData = [data.val()];
     console.log(mokData);
     $.each(mokData, function (i) {
-        var templateString = '<div class="card"><div class="card-head"><img src="./assets/images/6316-removebg-preview.png" width="150px"><h2>'+mokData[i].Conference+'<br><span>'+mokData[i].Type+'</span></h2></div><div class="card-main"><h4><p>Start :'+mokData[i].Start+'</p>End:'+mokData[i].End+'<br>Place:'+mokData[i].Place+'<br></h4></div><a class="linkbtn" href="'+mokData[i].Paper+'" target = "_blank"> <button  class="downloadbtn"><i class="fa fa-download"></i> &nbspDownload</button> </a></div>';
+        var templateString = '<div class="card"><div class="card-head"><img src="./assets/images/6316-removebg-preview.png" width="150px"><h2>'+mokData[i].Conference+'<br><span>'+mokData[i].Type+'</span></h2></div><div class="card-main"><h4><p>Start :'+mokData[i].Start+'</p>End:'+mokData[i].End+'<br>Place:'+mokData[i].Place+'<br></h4></div><a class="linkbtn" href="'+mokData[i].Proof+'" target = "_blank"> <button  class="downloadbtn"><i class="fa fa-download"></i> &nbspDownload</button> </a></div>';
         $('#test12').append(templateString);
         })
     });

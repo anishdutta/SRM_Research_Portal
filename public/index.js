@@ -87,6 +87,7 @@ function signup(){
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
+      alert(errorMessage);
       console.log(errorCode);
     console.log(errorMessage);
       // ...

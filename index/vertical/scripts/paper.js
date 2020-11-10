@@ -1,14 +1,16 @@
 var Title = "";
 var Publisher = "";
 var Volume ="";
-var Page ="";
-var date =""; 
+var Page =""; 
 var Type = "";
 var snip="";
 var impact =""; 
 var name =""; 
 var email ="";
 var paper="";
+var month="";
+var datea="";
+var year="";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var paperurl = "";
@@ -66,16 +68,18 @@ function submitwork(){
     Publisher =document.getElementById('Publisher').value;
     Volume =document.getElementById('Volume').value;
     Page =document.getElementById('Page').value;
-    date =document.getElementById('date').value;
     Type =document.getElementById('Type').value;
     snip =document.getElementById('snip').value;
     impact =document.getElementById('impact').value;
     name =document.getElementById('name').value;
     email =document.getElementById('email').value;
     paper =document.getElementById('paper').value;
+    datea =document.getElementById('datea').value;
+    month =document.getElementById('month').value;
+    year =document.getElementById('year').value;
     
 //pass all values
-    saveMessage(Title,Publisher,Volume,Page,date,Type,snip,impact,name,email,paper);
+    saveMessage(Title,Publisher,Volume,Page,Type,snip,impact,name,email,paper,datea,month,year);
 
     //Show Alert
     //add div with class of Alert
@@ -127,22 +131,24 @@ var storageRef = storage.ref();
 
 //Save messages to firebase
 // all input fields
-function saveMessage(Title,Publisher,Volume,Page,date,Type,snip,impact,name,email,url)  
+function saveMessage(Title,Publisher,Volume,Page,Type,snip,impact,name,email,url,datea,month,year)  
 { 
-   if(Title !="" && Publisher!=""&& Volume!="" && Page!="" && date!="" && Type!="" && snip!="" && impact!="" && name!="" && email!="" && url!="")
+   if(Title !="" && Publisher!=""&& Volume!="" && Page!="" && datea!="" && Type!="" && snip!="" && impact!="" && name!="" && email!="" && url!=""&& datea!="" && month !="" &&year!="")
     {
         firebase.database().ref('PaperPublication').push({    
         Title : Title,
         PublisherName: Publisher,
         Volume:  Volume,
         Page: Page,
-        date: date,
         Type: Type,
         Snip : snip,
         Impact: impact,
         Name: name,
         Email: email,
-        Paper: paperurl
+        Paper: paperurl,
+        datea: datea,
+        month: month,
+        year: year,
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

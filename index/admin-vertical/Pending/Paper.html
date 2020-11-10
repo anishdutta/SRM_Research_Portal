@@ -402,6 +402,50 @@
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <h3 class="mb-0">Paper Publication in Journals</h3>
                                 </div>
+                                <a class="popup-form btn btn-primary" href="#test-form">Popup form</a>
+                                
+                            </div>
+                        </div>
+                        <div class="card mfp-hide mfp-popup-form mx-auto" id="test-form">
+                            <div class="card-body">
+                                <h4 class="mt-0 mb-4">Form</h4>   
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="subject">Subject</label>
+                                                <textarea class="form-control" id="subject" rows="3"></textarea>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-right">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <!-- end page title -->
@@ -428,7 +472,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id="test12">
-
                                             
 
                                          
@@ -523,7 +566,6 @@
         <script src="../assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 
         <!-- Required datatable js -->
-        <script src="../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
         
         <!-- Responsive examples -->
@@ -539,6 +581,10 @@
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- lightbox init js-->
+        <script src="assets/js/pages/lightbox.init.js"></script>
         <script>
             var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -554,7 +600,7 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
+var templateString = "";
 // Retrieve new posts as they are added to our database
 function getdata(){
     
@@ -564,8 +610,8 @@ var playersRef = firebase.database().ref("conference/");
     var mokData = [data.val()];
     console.log(mokData);
     $.each(mokData, function (i) {
-        var templateString = '<tr> <td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">#MN0132</a> </td> <td> 10 Jul, 2020 </td> <td>Melvin Martin</td> <td> $142 </td> <td> <div class="badge badge-pill badge-soft-success font-size-12">Paid</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"><i class="fa fa-check-circle" aria-hidden="true"></i></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
-        $('#test12').append(templateString);
+        templateString =templateString +'<tr> <td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">#MN0132</a> </td> <td> 10 Jul, 2020 </td> <td>Melvin Martin</td> <td> $142 </td> <td> <div class="badge badge-pill badge-soft-success font-size-12">Paid</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+        $('#test12').html(templateString);
         })
     });
 }

@@ -5,9 +5,13 @@ var Author ="";
 var Title ="";
 var Conference ="";
 var Place ="";
-var From ="";
-var till = "";
 var conproof = "";
+var datef ="";
+var monthf ="";
+var yearf = "";
+var datet = "";
+var montht = "";
+var yeart = "";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -62,13 +66,17 @@ function submitwork(){
      Title =document.getElementById('Title').value;
      Conference =document.getElementById('nameConf').value;
      Place =document.getElementById('Place').value;
-     From =document.getElementById('fromD').value;
-     till =document.getElementById('toD').value;
      proof =document.getElementById('proof').value;
+     datef = document.getElementById('datef').value;
+     monthf = document.getElementById('monthf').value;
+     yearf = document.getElementById('yearf').value;
+     datet = document.getElementById('datet').value;
+     montht = document.getElementById('montht').value;
+     year = document.getElementById('yeart').value;
     
     
     //pass all values
-    saveMessage(Type,Author,Title,Conference,Place,From,till,proof);
+    saveMessage(Type,Author,Title,Conference,Place,proof,datef,monthf,yearf,datet,montht,yeart);
 
     //Show Alert
     //add div with class of Alert
@@ -119,18 +127,22 @@ var storageRef = storage.ref();
 
 //Save messages to firebase
 // all input fields
-function saveMessage(Type,Author,Title,Conference,Place,From,till)  
+function saveMessage(Type,Author,Title,Conference,Place,datef,monthf,yearf,datet,montht,yeart)  
 { 
-    if(Type!="" && Author!="" && Title!="" && Conference!="" && Place!="" && From!="" && till!="" && conproof!=""){
+    if(Type!="" && Author!="" && Title!="" && Conference!="" && Place!="" && conproof!="" &&datef!="" && monthf!="" &&yearf!="" &&datet !="" &&montht!="" &&yeart!=""){
         firebase.database().ref('conference').push({    
             Type : Type,
             NumberofAuthor:Author,
             Title:  Title,
             Conference: Conference,
             Place: Place,
-            Start: From,
-            End : till,
             Proof: conproof,
+            datef:datef,
+            monthf:monthf,
+            yearf:yearf,
+            datet:datet,
+            montht:montht,
+            yeart:yeart
         })
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

@@ -1,12 +1,10 @@
 <!doctype html>
 <html lang="en">
 
-    
-<!-- Mirrored from themesbrand.com/minible/layouts/vertical/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 13:38:19 GMT -->
 <head>
         
         <meta charset="utf-8" />
-        <title>Basic Elements | Minible - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>event details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -458,9 +456,48 @@
                                         
                                         
                                         <div class="form-group row">
-                                            <label for="example-datetime-local-input" class="col-md-2 col-form-label">Date and time</label>
+                                            <label for="example-number-input" class="col-md-2 col-form-label">Date</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="datetime-local"  id="DandT">
+                                                <input class="form-control" type="number" value="" id="datea">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Month</label>
+                                            <div class="col-md-10">
+                                                <select class="custom-select" id="month">
+                                                    <option selected>Select Month</option>
+                                                    <option value="January">January</option>
+                                                    <option value="February">February</option>
+                                                    <option value="March">March</option>
+                                                    <option value="April">April</option>
+                                                    <option value="May">May</option>
+                                                    <option value="June">June</option>
+                                                    <option value="July">July</option>
+                                                    <option value="August">August</option>
+                                                    <option value="September">September</option>
+                                                    <option value="October">October</option>
+                                                    <option value="November">November</option>
+                                                    <option value="December">December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Year</label>
+                                            <div class="col-md-10">
+                                                <select class="custom-select" id="year">
+                                                    <option selected>Select Year</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -637,31 +674,15 @@
         <script src="assets/js/pages/form-repeater.int.js"></script>
 
         <script src="assets/js/app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
-    authDomain: "srm-research-portal-3ef39.firebaseapp.com",
-    databaseURL: "https://srm-research-portal-3ef39.firebaseio.com",
-    projectId: "srm-research-portal-3ef39",
-    storageBucket: "srm-research-portal-3ef39.appspot.com",
-    messagingSenderId: "338025397922",
-    appId: "1:338025397922:web:7e43bb0bc83e3de213a1fb",
-    measurementId: "G-9WCQV8696P"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
-        <script src="scripts/event.js"></script>
+
+    <script src="scripts/event.js"></script>
 
 
 

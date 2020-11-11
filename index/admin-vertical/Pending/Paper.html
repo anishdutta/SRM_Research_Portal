@@ -357,59 +357,9 @@
                         </ul>
                         <br>
                         <ul class="metismenu list-unstyled" id="side-menu">
-                            <li class="menu-title">Approved</li>
+                            <li class="menu-title">Filter</li>
 
                             <li>
-                                <a href="../index.html">
-                                    <i class="uil-home-alt"></i>
-                                    <span>Paper Publication</span>
-                                </a>
-                                <a href="Conference.html">
-                                    <i class="uil-home-alt"></i>
-                                    <span>Conference</span>
-                                </a>
-                                <a href="workshop.html">
-                                    <i class="uil-home-alt"></i>
-                                    <span>Workshops</span>
-                                </a>
-                                <a href="Event.html">
-                                    <i class="uil-home-alt"></i>
-                                    <span>Events Organized</span>
-                                </a>
-                            </li>
-                        </ul>
-                      
-                    </div>
-                    <!-- Sidebar -->
-                   
-                </div>
-                 
-            </div>
-        <!-- Left Sidebar End -->
-
-            
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="main-content">
-
-                <div class="page-content">
-                    <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h3 class="mb-0">Paper Publication in Journals</h3>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <a class="popup-form btn btn-primary" href="#test-form">Filter</a>
-                        <div class="card mfp-hide mfp-popup-form mx-auto" id="test-form">
-                            <div class="card-body">
-                                <h4 class="mt-0 mb-4">Month Sort</h4>   
                                 <form>
                                     <div class="row">
                                         <!-- <div class="col-lg-4">
@@ -418,10 +368,10 @@
                                                 <input type="number" class="form-control" id="day" placeholder="">
                                             </div>
                                         </div> -->
-                                        <div class="col-lg-4">
+                                        <div class="row" style="margin-left: 30px;">
                                             <div class="form-group">
                                                 <label for="Month" class="">Month</label>
-                                                <div class="col-md-10">
+                                                <div class="col-md-30">
                                                     <select class="custom-select" id="month">
                                                         <option selected>Select Month</option>
                                                         <option value="January">January</option>
@@ -452,13 +402,42 @@
                                 </form>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="text-right">
-                                                <button  onclick="getdatamonth()" class="btn btn-primary">Submit</button>
+                                        <div class="text-center">
+                                                <button  onclick="getdatamonth()" class="btn btn-primary">Filter</button>
                                         </div>
                                     </div>
                                 </div>
+                            </li>
+                        </ul>
+                      
+                    </div>
+                    <!-- Sidebar -->
+                   
+                </div>
+                 
+            </div>
+        <!-- Left Sidebar End -->
+
+            
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h3 class="mb-0">Paper Publication in Journals</h3>
+                                </div>
+                                
                             </div>
                         </div>
+                     
                         <!-- end page title -->
 
                         <div class="row">
@@ -614,22 +593,20 @@
 var templateString = "";
 // Retrieve new posts as they are added to our database
 function getdata(){
-    
-
-var playersRef = firebase.database().ref("conference/");
+var playersRef = firebase.database().ref("PaperPublication/");
     playersRef.on("child_added", function(data) {
     var mokData = [data.val()];
     console.log(mokData);
     $.each(mokData, function (i) {
-        templateString =templateString +'<tr> <td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">#MN0132</a> </td> <td> 10 Jul, 2020 </td> <td>Melvin Martin</td> <td> $142 </td> <td> <div class="badge badge-pill badge-soft-success font-size-12">Paid</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+        templateString =templateString +'<tr><td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].Name+'</a> </td> <td>'+mokData[i].datea +','+ mokData[i].month +' '+mokData[i].year+'</td><td>'+mokData[i].Title+'</td> <td>'+mokData[i].PublisherName+'</td> <td> <div class="badge badge-pill badge-soft-success font-size-12">'+mokData[i].Impact+'</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
         $('#test12').html(templateString);
         })
     });
 }
-
- var templateStringmot = "";
+var templateStringmot = "";
 var month = "";
 var year = "";
+
 function getdatamonth(){
     month = $('#month').val();
     year = $('#year').val();
@@ -644,18 +621,17 @@ var playersRef = firebase.database().ref("PaperPublication/");
     $.each(mokData, function (i) {
         console.log(mokData[i].month);
         if(mokData[i].month == month && mokData[i].year == year){
-            templateStringmot =templateStringmot +'<tr> <td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].month+','+mokData[i].year+'</a> </td> <td> 10 Jul, 2020 </td> <td>Melvin Martin</td> <td> $142 </td> <td> <div class="badge badge-pill badge-soft-success font-size-12">Paid</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+            templateStringmot =templateStringmot +'<tr><td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].Name+'</a> </td> <td>'+mokData[i].datea +','+ mokData[i].month +' '+mokData[i].year+'</td><td>'+mokData[i].Title+'</td> <td>'+mokData[i].PublisherName+'</td> <td> <div class="badge badge-pill badge-soft-success font-size-12">'+mokData[i].Impact+'</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
         $('#test12').html(templateStringmot);
         }
         else{
             console.log('nahi hai');
         }
-        if(templateStringmot == ""){
-            $('#test12').html("Not Found");
-        }
+       
         
         })
     });
+
 }
 
 getdata();

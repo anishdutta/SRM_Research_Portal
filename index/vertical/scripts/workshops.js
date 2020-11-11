@@ -45,10 +45,9 @@ function submitwork(){
     ConductedBy =getInputVal('ConductedBy');
     Place =getInputVal('Place');
     DandT =getInputVal('DandT');
-    workshop = document.getElementById('workshop').value;
 
     //pass all values
-    saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT,workshop);  
+    saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT);  
 }
 
 
@@ -79,7 +78,7 @@ function displayImage(row,images){
 
     });
 }
-function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT,workshopad)  
+function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT)  
 { 
     if(Type != "" && Subtype != "" && Topic != "" &&  ConductedBy!= "" && Place !="" && DandT !="" ){
             firebase.database().ref('workshops').push({    
@@ -89,7 +88,6 @@ function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT,workshopad)
                 ConductedBy: ConductedBy,
                 Place: Place,
                 Date : DandT,
-                workshop : workshopad
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

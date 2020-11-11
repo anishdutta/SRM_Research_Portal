@@ -164,7 +164,7 @@
                                        <div class="form-group row">
                                             <label class="col-md-2 col-form-label">Type of workshop</label>
                                             <div class="col-md-10">
-                                                <select class="custom-select" id ="Type" required>
+                                                <select class="custom-select" id="Type" required>
                                                     <option selected>Open this select menu</option>
                                                     <option value="Workshop">Workshop </option>
                                                     <option value="FDP">FDP</option>
@@ -175,7 +175,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-2 col-form-label">Subtype</label>
                                             <div class="col-md-10">
-                                                <select class="custom-select" id= "Subtype" required>
+                                                <select class="custom-select" id="Subtype" required>
                                                     <option selected>Open this select menu</option>
                                                     <option value="Internal">Internal </option>
                                                     <option value="External">External</option>
@@ -205,12 +205,50 @@
                                         </div>
                                         
                                         <div class="form-group row">
-                                            <label for="example-datetime-local-input" class="col-md-2 col-form-label">Date and time</label>
+                                            <label for="example-number-input" class="col-md-2 col-form-label">Date</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="datetime-local" id="DandT" required>
+                                                <input class="form-control" type="number" value="" id="datea">
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Month</label>
+                                            <div class="col-md-10">
+                                                <select class="custom-select" id="month">
+                                                    <option selected>Select Month</option>
+                                                    <option value="January">January</option>
+                                                    <option value="February">February</option>
+                                                    <option value="March">March</option>
+                                                    <option value="April">April</option>
+                                                    <option value="May">May</option>
+                                                    <option value="June">June</option>
+                                                    <option value="July">July</option>
+                                                    <option value="August">August</option>
+                                                    <option value="September">September</option>
+                                                    <option value="October">October</option>
+                                                    <option value="November">November</option>
+                                                    <option value="December">December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">Year</label>
+                                            <div class="col-md-10">
+                                                <select class="custom-select" id="year">
+                                                    <option selected>Select Year</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="text-center mt-4">
                                             <button type="button" class="btn btn-primary waves-effect waves-light" id="submit" onclick="submitwork()">Submit</button>
                                         </div>
@@ -231,7 +269,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © copyrights
+                                <script>document.write(new Date().getFullYear())</script>© copyrights
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-right d-none d-sm-block">
@@ -253,7 +291,6 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
         <script src="assets/libs/jquery/jquery.min.js"></script>
         <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="assets/libs/metismenu/metisMenu.min.js"></script>
@@ -269,11 +306,12 @@
         <script src="assets/js/app.js"></script>
         <!--Firebase-->
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-database.js"></script> 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-<script src="scripts/workshops.js" ></script>
+        <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+        <script src="scripts/workshops.js"></script>
     </body>
 </html>

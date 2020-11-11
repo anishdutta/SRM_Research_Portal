@@ -3,13 +3,15 @@
 var Type="";
 var Title="";
 var Role="";
-var DandT="";
 var internals="";
 var externals="";
 var brochure="";
 var photos="";
 var paperurl = "";
 var  broucherup = "";
+var datea = "";
+var month = "";
+var year = "";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -88,15 +90,17 @@ function submitwork(){
     Type =getInputVal('Type');
     Title =getInputVal('Title');
     Role =getInputVal('Role');
-    DandT =getInputVal('DandT');
     internals =getInputVal('internals');
     externals =getInputVal('externals');
     brochure =getInputVal('brochure');
     photos =getInputVal('photos');
+    datea = document.getElementById('datea').value;
+    month = document.getElementById('month').value;
+    year = document.getElementById('year').value;
     
     
     //pass all values
-    saveMessage(Type,Title,Role,DandT,internals,externals,brochure,photos);
+    saveMessage(Type,Title,Role,internals,externals,brochure,photos,datea,month,year);
 
     //Show Alert
     //add div with class of Alert
@@ -121,18 +125,20 @@ function getInputVal(id){
 
 //Save messages to firebase
 // all input fields
-function saveMessage(Type,Title,Role,DandT,internals,externals,brochure,photos)  
+function saveMessage(Type,Title,Role,internals,externals,brochure,photos,datea,month,year)  
 { 
-    if(Type!="" && Title!="" && Role!="" && DandT!="" && internals!="" && externals!="" && brochure!="" && photos!=""){
+    if(Type!="" && Title!="" && Role!="" && internals!="" && externals!="" && brochure!="" && photos!="" && datea !="" &&month != "" && year != "" ){
         firebase.database().ref('events').push({    
             Type : Type,
             Title:  Title,
             Role: Role,
-            DateTime: DandT,
             NumberofInternals: internals,
             NumberofExternals : externals,
             Brochure: broucherup,
             Photos: paperurl,
+            datea: datea,
+            month : month,
+            year : year
         })
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

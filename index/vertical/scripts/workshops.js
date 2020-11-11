@@ -5,8 +5,9 @@ var Subtype="";
 var Topic="";
 var ConductedBy="";
 var Place="";
-var DandT="";
-var workshop = "";
+var datea ="";
+var month ="";
+var year ="";
 
 var firebaseConfig = {
     apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
@@ -44,10 +45,12 @@ function submitwork(){
     Topic =getInputVal('Topic');
     ConductedBy =getInputVal('ConductedBy');
     Place =getInputVal('Place');
-    DandT =getInputVal('DandT');
+    datea = document.getElementById('datea').value;
+    month = document.getElementById('month').value;
+    year = document.getElementById('year').value;
 
     //pass all values
-    saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT);  
+    saveMessage(Type,Subtype,Topic,ConductedBy,Place,datea,month,year);  
 }
 
 
@@ -62,7 +65,6 @@ function getInputVal(id){
 function displayImage(row,images){
     images.getDownloadURL().then(function(url){
         console.log(url);
-        workshop = workshopad ;
 
         let new_html = ' ';
         new_html += '<tr>';
@@ -78,16 +80,18 @@ function displayImage(row,images){
 
     });
 }
-function saveMessage(Type,Subtype,Topic,ConductedBy,Place,DandT)  
+function saveMessage(Type,Subtype,Topic,ConductedBy,Place,datea,month,year)  
 { 
-    if(Type != "" && Subtype != "" && Topic != "" &&  ConductedBy!= "" && Place !="" && DandT !="" ){
+    if(Type != "" && Subtype != "" && Topic != "" &&  ConductedBy!= "" && Place !="" && datea !="" && month !="" && year != "" ){
             firebase.database().ref('workshops').push({    
                 Type : Type,
                 Subtype: Subtype,
                 Topic: Topic,
                 ConductedBy: ConductedBy,
                 Place: Place,
-                Date : DandT,
+                datea: datea,
+                month: month,
+                year: year
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

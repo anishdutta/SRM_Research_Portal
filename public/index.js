@@ -61,12 +61,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 //     }
 //   });  
 
-function uidCheck(uid){
-  $.get("https://srm-research-portal-3ef39.firebaseio.com/Roles/"+uid+".json", function(data, status){
-alert("Data: " + data + "\nStatus: " + status);
-console.log(data['Role']);
-});
-}
+// function uidCheck(uid){
+//   $.get("https://srm-research-portal-3ef39.firebaseio.com/Roles/"+uid+".json", function(data, status){
+// alert("Data: " + data + "\nStatus: " + status);
+// console.log(data['Role']);
+// });
+// }
 
 function signin(){
     var userEmail = document.getElementById("useremail_field").value;
@@ -111,16 +111,16 @@ function userlogout(){
 }
 function uidCheck(uid){
   $.get("https://srm-research-portal-3ef39.firebaseio.com/Roles/"+uid+".json", function(data, status){
-alert("Data: " + data + "\nStatus: " + status);
+// alert("Data: " + data + "\nStatus: " + status);
 if(data == null){
   console.log('nope');
-  window.location = '../index/vertical/a-index.html';
+  window.location = 'index/vertical/a-index.html';
 
 }
 console.log(data['Role']);
 if(data['Role'] == "Admin"){
   console.log('yeah its admin')
-  window.location = '../index/admin-vertical/Pending/Paper.html';
+  window.location = 'index/admin-vertical/Pending/Paper.html';
 }
 else{
   console.log('nope');

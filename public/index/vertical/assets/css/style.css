@@ -1,5 +1,13 @@
 
-  
+
+  .h41 {
+    color: #fefefe;
+    opacity: 0;
+    left: 0.4375em;
+    font-size: 30px;
+    padding-top: 3%;
+    padding-left: 3%;
+  }
   .card-slider {
     max-width: 1060px;
     margin: 0 auto;
@@ -988,3 +996,24 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
 transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
+.infobtn{
+  display: inline-block;
+  font-weight: 400;
+  color: #2278bd;
+  text-align: end !important;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .47rem .75rem;
+  font-size: .9rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  }

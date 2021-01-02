@@ -22,11 +22,25 @@
     
     <title>Paper Publication</title>
     <style>
+
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+        
       .card{
    display: inline-block;
    
   
-    height: 271px;
+    height: 385px;
+    width: 370px;
     border-radius: 3px;
     background-color: white;
     text-decoration: none;
@@ -587,6 +601,13 @@
              <div class="main-content">
                 <div class="page-content">
                     <div class="row" id="test12">
+                        <script>
+                            function myfunction(){
+                                var popup = document.getElementById("myPopup");
+                                popup.classList.toggle("show");
+
+                            }
+                        </script>
                         
 
                     </div>

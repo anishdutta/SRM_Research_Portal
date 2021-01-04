@@ -11,6 +11,8 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var adminEmail = "";
+var adminPass = "";
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // User is signed in.
@@ -80,9 +82,25 @@ function signin(){
         // ...
       });
 }
+
+var facultyidV , designationV;
+function Ready(){
+  facultyidV = document.getElementById('facultyidbox').value;
+  designationV = document.getElementById('designationbox').value;
+}
+document.getElementById('insert').onclick = function(){
+  Ready();
+  signup();
+  firebase.database().ref('Signup/'+facultyidV).set({
+      FacultyId : facultyidV,
+      Designation : designationV,
+      Email : adminEmail
+
+  });
+}
 function signup(){
-    var adminEmail = document.getElementById("adminemail_field").value;
-    var adminPass = document.getElementById("adminpassword_field").value;
+    adminEmail = document.getElementById("adminemail_field").value;
+    adminPass = document.getElementById("adminpassword_field").value;
     firebase.auth().createUserWithEmailAndPassword(adminEmail, adminPass).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -90,6 +108,7 @@ function signup(){
       alert(errorMessage);
       console.log(errorCode);
     console.log(errorMessage);
+
       // ...
     });
 }

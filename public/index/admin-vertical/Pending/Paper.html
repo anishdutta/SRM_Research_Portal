@@ -69,8 +69,7 @@
                         <!-- App Search-->
                         <form class="app-search d-none d-lg-block">
                             <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="uil-search"></span>
+                                <button type="button" onclick="logout()" class="btn btn-danger">Log out</button>
                             </div>
                         </form>
                     </div>
@@ -407,6 +406,55 @@
                                         </div>
                                     </div>
                                 </div>
+                                <form>
+                                    <div class="row" style="margin-left: 30px; margin-top: 20px;">
+                                        <!-- <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="Day">Day</label>
+                                                <input type="number" class="form-control" id="day" placeholder="">
+                                            </div>
+                                        </div> -->
+                                        
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="Year">Year</label>
+                                                <input type="number" class="form-control" id="yearnew" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <div class="text-center" style="margin-top: 30px;">
+                                                <button type="button"  onclick="getdatayear()" class="btn btn-primary">Filter</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                   
+                                    
+                                </form>
+                                <form>
+                                    <div class="row" style="margin-left: 30px; margin-top: 20px;">
+                                        <!-- <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="Day">Day</label>
+                                                <input type="number" class="form-control" id="day" placeholder="">
+                                            </div>
+                                        </div> -->
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="Year">Faculty ID</label>
+                                                <input type="number" class="form-control" id="yearnew" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <div class="text-center" style="margin-top: 30px;">
+                                                <button type="button"  onclick="" class="btn btn-primary">Filter</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                   
+                                    
+                                </form>
+                                
                             </li>
                         </ul>
                       
@@ -606,6 +654,7 @@ var playersRef = firebase.database().ref("PaperPublication/");
 var templateStringmot = "";
 var month = "";
 var year = "";
+var yearnew = "";
 
 function getdatamonth(){
     month = $('#month').val();
@@ -633,9 +682,70 @@ var playersRef = firebase.database().ref("PaperPublication/");
     });
 
 }
+function getdatayear(){
+    yearnew = $('#yearnew').val();
+    templateStringmot = "";
+    if (yearnew != ""){
+        $('#test12').html("");
+    }
+var playersRef = firebase.database().ref("PaperPublication/");
+    playersRef.on("child_added", function(data) {
+        templateStringmot = "";
+    var mokData = [data.val()];
+    console.log(mokData);
+    $.each(mokData, function (i) {
+        console.log(mokData[i].year);
+        if( mokData[i].year == yearnew){
+            templateStringmot ='<tr><td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].Name+'</a> </td> <td>'+mokData[i].datea +','+ mokData[i].month +' '+mokData[i].year+'</td><td>'+mokData[i].Title+'</td> <td>'+mokData[i].PublisherName+'</td> <td> <div class="badge badge-pill badge-soft-success font-size-12">'+mokData[i].Impact+'</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+        // $('#test12').html(templateStringmot);
+        $('#test12').prepend(templateStringmot);
+        }
+        else{
+            console.log('nahi hai');
+        }
+       
+        
+        })
+    });
+
+}
+function getdatafacid(){
+    facid = $('#facid').val();
+    templateStringmot = "";
+    if (facid != ""){
+        $('#test12').html("");
+    }
+var playersRef = firebase.database().ref("PaperPublication/");
+    playersRef.on("child_added", function(data) {
+        templateStringmot = "";
+    var mokData = [data.val()];
+    console.log(mokData);
+    $.each(mokData, function (i) {
+        console.log(mokData[i].year);
+        if( mokData[i].year == facid){
+            templateStringmot ='<tr><td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].Name+'</a> </td> <td>'+mokData[i].datea +','+ mokData[i].month +' '+mokData[i].year+'</td><td>'+mokData[i].Title+'</td> <td>'+mokData[i].PublisherName+'</td> <td> <div class="badge badge-pill badge-soft-success font-size-12">'+mokData[i].Impact+'</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+        // $('#test12').html(templateStringmot);
+        $('#test12').prepend(templateStringmot);
+        }
+        else{
+            console.log('nahi hai');
+        }
+       
+        
+        })
+    });
+
+}
 
 getdata();
         </script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+          <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+        
+          <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+        <script src="../../../firebase.js"></script>
 
     </body>
 </html>

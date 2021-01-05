@@ -13,6 +13,32 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  getdata();
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  
+    if (user) {
+      // User is signed in.
+  
+      
+      
+  
+      var user = firebase.auth().currentUser;
+      if(user != null){
+          var email_id = user.uid;
+      
+      }
+  
+  
+  
+    } else {
+      // No user is signed in.
+   console.log('hey eroor');
+   alert('Session timed out!');
+   window.location.href = "../../index.html";
+      
+    }
+  });
 
 // Retrieve new posts as they are added to our database
 function getdata(){
@@ -28,4 +54,14 @@ var playersRef = firebase.database().ref("PaperPublication/");
     });
 }
 
-getdata();
+
+  
+    function logout(){
+      firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    console.log('User Logged Out!');
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
+    }

@@ -820,60 +820,11 @@
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-        <script src="scripts/getpaper.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
 
-        <script >
-            var firebaseConfig = {
-    apiKey: "AIzaSyDCE0BDSOZS-mKoUApeYqUw_x52It6wqWI",
-    authDomain: "srm-research-portal-3ef39.firebaseapp.com",
-    databaseURL: "https://srm-research-portal-3ef39.firebaseio.com",
-    projectId: "srm-research-portal-3ef39",
-    storageBucket: "srm-research-portal-3ef39.appspot.com",
-    messagingSenderId: "338025397922",
-    appId: "1:338025397922:web:7e43bb0bc83e3de213a1fb",
-    measurementId: "G-9WCQV8696P"
-  };
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-    firebase.auth().onAuthStateChanged(function(user) {
-  
-  if (user) {
-    // User is signed in.
+        <script src="scripts/getpaper.js"></script>
 
-    
-    
-
-    var user = firebase.auth().currentUser;
-    if(user == null){
-        var email_id = user.uid;
-        window.location = 'loading.html';
-        $('.uid').html('hello');
-        document.getElementById("user_para").innerHTML = "welcome user : " + email_id
-        console.log(email_id);
-    }
-
-
-
-  } else {
-    // No user is signed in.
-    console.log(ok);
-    
-  }
-});
-
-  function logout(){
-    firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  console.log('User Logged Out!');
-}).catch(function(error) {
-  // An error happened.
-  console.log(error);
-});
-  }
-
-
-        </script>
+      
     </body>
 
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/ui-cards.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Oct 2020 13:38:13 GMT -->

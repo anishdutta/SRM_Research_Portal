@@ -1,3 +1,31 @@
+var email_id = "";
+var uid  = "";
+firebase.auth().onAuthStateChanged(function(user) {
+  
+    if (user) {
+      // User is signed in.
+  
+      
+      
+  
+      var user = firebase.auth().currentUser;
+      if(user != null){
+         email_id = user.email;
+         uid = user.uid;
+          console.warn(email_id);
+      
+      }
+  
+  
+  
+    } else {
+      // No user is signed in.
+   console.log('hey eroor');
+   alert('Session timed out!');
+   window.location.href = "../../index.html";
+      
+    }
+  });
 var Title = "";
 var Publisher = "";
 var Volume ="";
@@ -143,12 +171,14 @@ function saveMessage(Title,Publisher,Volume,Page,Type,snip,impact,name,email,url
         Type: Type,
         Snip : snip,
         Impact: impact,
-        Name: name,
-        Email: email,
+        NameAuthor: name,
+        EmailAuthor: email,
         Paper: paperurl,
         datea: datea,
         month: month,
         year: year,
+        email: email_id,
+        uid: uid
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

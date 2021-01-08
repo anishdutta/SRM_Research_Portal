@@ -14,6 +14,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
   getdata();
+  var uid="";
 
   firebase.auth().onAuthStateChanged(function(user) {
   
@@ -25,7 +26,7 @@ var firebaseConfig = {
   
       var user = firebase.auth().currentUser;
       if(user != null){
-          var email_id = user.uid;
+           uid = user.uid;
       
       }
   
@@ -39,7 +40,7 @@ var firebaseConfig = {
       
     }
   });
-
+  var templateString = "";
 // Retrieve new posts as they are added to our database
 function getdata(){
 
@@ -48,9 +49,31 @@ var playersRef = firebase.database().ref("PaperPublication/");
     var mokData = [data.val()] ;
     console.log(mokData);
     $.each(mokData, function (i) {
-        var templateString = '<div class="card"> <div class="card-head"> <img src="./assets/images/6316-removebg-preview.png" width="150px"> <h2>'+mokData[i].Title+'<br><span>'+mokData[i].PublisherName+'</span></h2></div> <div class="card-main"> <h4> <p>Name :'+mokData[i].Name+'</p><p>Email :'+mokData[i].Email+'</p><p>Date :'+mokData[i].datea+'/'+mokData[i].month+'/'+mokData[i].year+'</p><p>Impact :'+mokData[i].Impact+'</p><p>Volume :'+mokData[i].Volume+'</p> </h4> </div> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <a class="linkbtn" href="'+mokData[i].Paper+'" target = "_blank"> <button  class="downloadbtn"><i class="fa fa-download"></i> &nbspDownload</button> </a> </div>';
+        templateString = '<div class="card"> <div class="card-head"> <img src="./assets/images/6316-removebg-preview.png" width="150px"> <h2>'+mokData[i].Title+'<br><span>'+mokData[i].PublisherName+'</span></h2></div> <div class="card-main"> <h4> <p>Name :'+mokData[i].Name+'</p><p>Email :'+mokData[i].Email+'</p><p>Date :'+mokData[i].datea+'/'+mokData[i].month+'/'+mokData[i].year+'</p><p>Impact :'+mokData[i].Impact+'</p><p>Volume :'+mokData[i].Volume+'</p> </h4> </div> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <a class="linkbtn" href="'+mokData[i].Paper+'" target = "_blank"> <button  class="downloadbtn"><i class="fa fa-download"></i> &nbspDownload</button> </a> </div>';
         $('#test12').append(templateString);
         })
+    });
+}
+function viewPost(){
+  templateString = "";
+  $('#test12').html('');
+var playersRef = firebase.database().ref("PaperPublication/");
+    playersRef.on("child_added", function(data) {
+    var mokData = [data.val()] ;
+    console.log(mokData);
+   
+      $.each(mokData, function (i) {
+        if(mokData[i].uid == uid){
+        templateString = '<div class="card"> <div class="card-head"> <img src="./assets/images/6316-removebg-preview.png" width="150px"> <h2>'+mokData[i].Title+'<br><span>'+mokData[i].PublisherName+'</span></h2></div> <div class="card-main"> <h4> <p>Name :'+mokData[i].Name+'</p><p>Email :'+mokData[i].Email+'</p><p>Date :'+mokData[i].datea+'/'+mokData[i].month+'/'+mokData[i].year+'</p><p>Impact :'+mokData[i].Impact+'</p><p>Volume :'+mokData[i].Volume+'</p> </h4> </div> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <a class="linkbtn" href="'+mokData[i].Paper+'" target = "_blank"> <button  class="downloadbtn"><i class="fa fa-download"></i> &nbspDownload</button> </a> </div>';
+        $('#test12').prepend(templateString);
+        }
+        else{
+          console.log('NA');
+        }
+        })
+    
+    
+    
     });
 }
 

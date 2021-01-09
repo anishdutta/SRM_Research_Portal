@@ -18,7 +18,7 @@ html, body * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
 
 @media(min-width: 1000px){
   .frame {
-    height: 900px !important;
+    height: 630px !important;
     width: 430px;
     
   background:

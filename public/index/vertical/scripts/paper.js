@@ -1,5 +1,6 @@
 var email_id = "";
 var uid  = "";
+var facultyID = "";
 firebase.auth().onAuthStateChanged(function(user) {
   
     if (user) {
@@ -13,6 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
          email_id = user.email;
          uid = user.uid;
           console.warn(email_id);
+          uidCheck(uid);
       
       }
   
@@ -26,6 +28,16 @@ firebase.auth().onAuthStateChanged(function(user) {
       
     }
   });
+  function uidCheck(uid){
+    $.get("https://srm-research-portal-3ef39.firebaseio.com/Userdetails/"+uid+".json", function(data, status){
+  // alert("Data: " + data + "\nStatus: " + status);
+
+  console.log(data['FacultyId']);
+  facultyID = data['FacultyId'];
+  
+  
+  });
+  }
 var Title = "";
 var Publisher = "";
 var Volume ="";
@@ -178,7 +190,8 @@ function saveMessage(Title,Publisher,Volume,Page,Type,snip,impact,name,email,url
         month: month,
         year: year,
         email: email_id,
-        uid: uid
+        uid: uid,
+        facultyID: facultyID
         });
         var alertness = `<div class="col-sm-12">
             <div class="alert alert-success alert-dismissible fade show mt-4 px-4 mb-0 text-center" role="alert">

@@ -628,6 +628,20 @@
 
         <script src="../../../firebase.js"></script>
         <script src="./firepaper.js"></script>
+        <script>
+              $(document).ready(function(){
+        var playersRef = firebase.database().ref("PaperPublication/");
+            playersRef.on("child_added", function(data) {
+            var mokData = [data.val()];
+            console.log(mokData);
+            $.each(mokData, function (i) {
+                templateString ='<tr><td> <div class="custom-control custom-checkbox text-center"> <input type="checkbox" class="custom-control-input" id="ordercheck1"> <label class="custom-control-label" for="ordercheck1"></label> </div> </td> <td><a href="javascript: void(0);" class="text-dark font-weight-bold">'+mokData[i].Name+'</a> </td> <td>'+mokData[i].datea +','+ mokData[i].month +' '+mokData[i].year+'</td><td>'+mokData[i].Title+'</td> <td>'+mokData[i].PublisherName+'</td> <td> <div class="badge badge-pill badge-soft-success font-size-12">'+mokData[i].Impact+'</div> </td> <td> <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="Approve"></a> <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="Reject"><i class="fa fa-times" aria-hidden="true"></i></a> </td> </tr>';
+                $('#test12').prepend(templateString);
+                })
+            });
+
+        });
+        </script>
 
     </body>
 </html>
